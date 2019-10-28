@@ -57,5 +57,18 @@ namespace classes
             var withdrawl = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawl);
         }
+
+        public string GetAccountHistory()
+        {
+            var report = new System.Text.StringBuilder();
+
+            report.AppendLine("Date\tAmount\tNote");
+            foreach (var item in allTransactions)
+            {
+                report.AppendLine($"{item.Date.ToShortDateString()}\t{item.Amount}\t{item.Notes}");
+            }
+
+            return report.ToString();
+        }
     }
 }
